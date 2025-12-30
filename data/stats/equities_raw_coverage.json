@@ -1,0 +1,212 @@
+[
+  {
+    "ticker": "AAPL",
+    "rows": 3702,
+    "min_date": "2021-01-04",
+    "max_date": "2025-12-01",
+    "missing_trading_days_est": 0
+  },
+  {
+    "ticker": "MSFT",
+    "rows": 3702,
+    "min_date": "2021-01-04",
+    "max_date": "2025-12-01",
+    "missing_trading_days_est": 0
+  },
+  {
+    "ticker": "AMZN",
+    "rows": 3702,
+    "min_date": "2021-01-04",
+    "max_date": "2025-12-01",
+    "missing_trading_days_est": 0
+  },
+  {
+    "ticker": "GOOGL",
+    "rows": 3702,
+    "min_date": "2021-01-04",
+    "max_date": "2025-12-01",
+    "missing_trading_days_est": 0
+  },
+  {
+    "ticker": "META",
+    "rows": 3702,
+    "min_date": "2021-01-04",
+    "max_date": "2025-12-01",
+    "missing_trading_days_est": 0
+  },
+  {
+    "ticker": "TSLA",
+    "rows": 3702,
+    "min_date": "2021-01-04",
+    "max_date": "2025-12-01",
+    "missing_trading_days_est": 0
+  },
+  {
+    "ticker": "NVDA",
+    "rows": 3702,
+    "min_date": "2021-01-04",
+    "max_date": "2025-12-01",
+    "missing_trading_days_est": 0
+  },
+  {
+    "ticker": "AMD",
+    "rows": 3702,
+    "min_date": "2021-01-04",
+    "max_date": "2025-12-01",
+    "missing_trading_days_est": 0
+  },
+  {
+    "ticker": "INTC",
+    "rows": 3702,
+    "min_date": "2021-01-04",
+    "max_date": "2025-12-01",
+    "missing_trading_days_est": 0
+  },
+  {
+    "ticker": "NFLX",
+    "rows": 3702,
+    "min_date": "2021-01-04",
+    "max_date": "2025-12-01",
+    "missing_trading_days_est": 0
+  },
+  {
+    "ticker": "JPM",
+    "rows": 3702,
+    "min_date": "2021-01-04",
+    "max_date": "2025-12-01",
+    "missing_trading_days_est": 0
+  },
+  {
+    "ticker": "BAC",
+    "rows": 3702,
+    "min_date": "2021-01-04",
+    "max_date": "2025-12-01",
+    "missing_trading_days_est": 0
+  },
+  {
+    "ticker": "WMT",
+    "rows": 3702,
+    "min_date": "2021-01-04",
+    "max_date": "2025-12-01",
+    "missing_trading_days_est": 0
+  },
+  {
+    "ticker": "KO",
+    "rows": 3702,
+    "min_date": "2021-01-04",
+    "max_date": "2025-12-01",
+    "missing_trading_days_est": 0
+  },
+  {
+    "ticker": "PEP",
+    "rows": 3702,
+    "min_date": "2021-01-04",
+    "max_date": "2025-12-01",
+    "missing_trading_days_est": 0
+  },
+  {
+    "ticker": "XOM",
+    "rows": 3702,
+    "min_date": "2021-01-04",
+    "max_date": "2025-12-01",
+    "missing_trading_days_est": 0
+  },
+  {
+    "ticker": "CVX",
+    "rows": 3702,
+    "min_date": "2021-01-04",
+    "max_date": "2025-12-01",
+    "missing_trading_days_est": 0
+  },
+  {
+    "ticker": "DIS",
+    "rows": 3702,
+    "min_date": "2021-01-04",
+    "max_date": "2025-12-01",
+    "missing_trading_days_est": 0
+  },
+  {
+    "ticker": "NKE",
+    "rows": 3702,
+    "min_date": "2021-01-04",
+    "max_date": "2025-12-01",
+    "missing_trading_days_est": 0
+  },
+  {
+    "ticker": "BA",
+    "rows": 3702,
+    "min_date": "2021-01-04",
+    "max_date": "2025-12-01",
+    "missing_trading_days_est": 0
+  },
+  {
+    "ticker": "GE",
+    "rows": 3702,
+    "min_date": "2021-01-04",
+    "max_date": "2025-12-01",
+    "missing_trading_days_est": 0
+  },
+  {
+    "ticker": "T",
+    "rows": 3702,
+    "min_date": "2021-01-04",
+    "max_date": "2025-12-01",
+    "missing_trading_days_est": 0
+  },
+  {
+    "ticker": "V",
+    "rows": 3702,
+    "min_date": "2021-01-04",
+    "max_date": "2025-12-01",
+    "missing_trading_days_est": 0
+  },
+  {
+    "ticker": "MA",
+    "rows": 3702,
+    "min_date": "2021-01-04",
+    "max_date": "2025-12-01",
+    "missing_trading_days_est": 0
+  },
+  {
+    "ticker": "PYPL",
+    "rows": 3702,
+    "min_date": "2021-01-04",
+    "max_date": "2025-12-01",
+    "missing_trading_days_est": 0
+  },
+  {
+    "ticker": "ORCL",
+    "rows": 3702,
+    "min_date": "2021-01-04",
+    "max_date": "2025-12-01",
+    "missing_trading_days_est": 0
+  },
+  {
+    "ticker": "CSCO",
+    "rows": 3702,
+    "min_date": "2021-01-04",
+    "max_date": "2025-12-01",
+    "missing_trading_days_est": 0
+  },
+  {
+    "ticker": "IBM",
+    "rows": 3702,
+    "min_date": "2021-01-04",
+    "max_date": "2025-12-01",
+    "missing_trading_days_est": 0
+  },
+  {
+    "ticker": "QCOM",
+    "rows": 3702,
+    "min_date": "2021-01-04",
+    "max_date": "2025-12-01",
+    "missing_trading_days_est": 0
+  },
+  {
+    "ticker": "CRM",
+    "rows": 3702,
+    "min_date": "2021-01-04",
+    "max_date": "2025-12-01",
+    "missing_trading_days_est": 0
+  }
+]

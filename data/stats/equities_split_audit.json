@@ -1,0 +1,309 @@
+{
+  "tickers": {
+    "equities_NVDA": {
+      "n_files": 16,
+      "n_train": 13,
+      "n_val": 3,
+      "files_val": [
+        "equities_NVDA_13.npy",
+        "equities_NVDA_14.npy",
+        "equities_NVDA_15.npy"
+      ]
+    },
+    "equities_V": {
+      "n_files": 16,
+      "n_train": 13,
+      "n_val": 3,
+      "files_val": [
+        "equities_V_13.npy",
+        "equities_V_14.npy",
+        "equities_V_15.npy"
+      ]
+    },
+    "equities_XOM": {
+      "n_files": 16,
+      "n_train": 13,
+      "n_val": 3,
+      "files_val": [
+        "equities_XOM_13.npy",
+        "equities_XOM_14.npy",
+        "equities_XOM_15.npy"
+      ]
+    },
+    "equities_PEP": {
+      "n_files": 16,
+      "n_train": 13,
+      "n_val": 3,
+      "files_val": [
+        "equities_PEP_13.npy",
+        "equities_PEP_14.npy",
+        "equities_PEP_15.npy"
+      ]
+    },
+    "equities_GOOGL": {
+      "n_files": 16,
+      "n_train": 13,
+      "n_val": 3,
+      "files_val": [
+        "equities_GOOGL_13.npy",
+        "equities_GOOGL_14.npy",
+        "equities_GOOGL_15.npy"
+      ]
+    },
+    "equities_KO": {
+      "n_files": 16,
+      "n_train": 13,
+      "n_val": 3,
+      "files_val": [
+        "equities_KO_13.npy",
+        "equities_KO_14.npy",
+        "equities_KO_15.npy"
+      ]
+    },
+    "equities_WMT": {
+      "n_files": 16,
+      "n_train": 13,
+      "n_val": 3,
+      "files_val": [
+        "equities_WMT_13.npy",
+        "equities_WMT_14.npy",
+        "equities_WMT_15.npy"
+      ]
+    },
+    "equities_BA": {
+      "n_files": 16,
+      "n_train": 13,
+      "n_val": 3,
+      "files_val": [
+        "equities_BA_13.npy",
+        "equities_BA_14.npy",
+        "equities_BA_15.npy"
+      ]
+    },
+    "equities_META": {
+      "n_files": 16,
+      "n_train": 13,
+      "n_val": 3,
+      "files_val": [
+        "equities_META_13.npy",
+        "equities_META_14.npy",
+        "equities_META_15.npy"
+      ]
+    },
+    "equities_QCOM": {
+      "n_files": 16,
+      "n_train": 13,
+      "n_val": 3,
+      "files_val": [
+        "equities_QCOM_13.npy",
+        "equities_QCOM_14.npy",
+        "equities_QCOM_15.npy"
+      ]
+    },
+    "equities_CRM": {
+      "n_files": 16,
+      "n_train": 13,
+      "n_val": 3,
+      "files_val": [
+        "equities_CRM_13.npy",
+        "equities_CRM_14.npy",
+        "equities_CRM_15.npy"
+      ]
+    },
+    "equities_AMZN": {
+      "n_files": 16,
+      "n_train": 13,
+      "n_val": 3,
+      "files_val": [
+        "equities_AMZN_13.npy",
+        "equities_AMZN_14.npy",
+        "equities_AMZN_15.npy"
+      ]
+    },
+    "equities_MA": {
+      "n_files": 16,
+      "n_train": 13,
+      "n_val": 3,
+      "files_val": [
+        "equities_MA_13.npy",
+        "equities_MA_14.npy",
+        "equities_MA_15.npy"
+      ]
+    },
+    "equities_INTC": {
+      "n_files": 16,
+      "n_train": 13,
+      "n_val": 3,
+      "files_val": [
+        "equities_INTC_13.npy",
+        "equities_INTC_14.npy",
+        "equities_INTC_15.npy"
+      ]
+    },
+    "equities_CSCO": {
+      "n_files": 16,
+      "n_train": 13,
+      "n_val": 3,
+      "files_val": [
+        "equities_CSCO_13.npy",
+        "equities_CSCO_14.npy",
+        "equities_CSCO_15.npy"
+      ]
+    },
+    "equities_AAPL": {
+      "n_files": 16,
+      "n_train": 13,
+      "n_val": 3,
+      "files_val": [
+        "equities_AAPL_13.npy",
+        "equities_AAPL_14.npy",
+        "equities_AAPL_15.npy"
+      ]
+    },
+    "equities_GE": {
+      "n_files": 16,
+      "n_train": 13,
+      "n_val": 3,
+      "files_val": [
+        "equities_GE_13.npy",
+        "equities_GE_14.npy",
+        "equities_GE_15.npy"
+      ]
+    },
+    "equities_NKE": {
+      "n_files": 16,
+      "n_train": 13,
+      "n_val": 3,
+      "files_val": [
+        "equities_NKE_13.npy",
+        "equities_NKE_14.npy",
+        "equities_NKE_15.npy"
+      ]
+    },
+    "equities_BAC": {
+      "n_files": 16,
+      "n_train": 13,
+      "n_val": 3,
+      "files_val": [
+        "equities_BAC_13.npy",
+        "equities_BAC_14.npy",
+        "equities_BAC_15.npy"
+      ]
+    },
+    "equities_ORCL": {
+      "n_files": 16,
+      "n_train": 13,
+      "n_val": 3,
+      "files_val": [
+        "equities_ORCL_13.npy",
+        "equities_ORCL_14.npy",
+        "equities_ORCL_15.npy"
+      ]
+    },
+    "equities_T": {
+      "n_files": 16,
+      "n_train": 13,
+      "n_val": 3,
+      "files_val": [
+        "equities_T_13.npy",
+        "equities_T_14.npy",
+        "equities_T_15.npy"
+      ]
+    },
+    "equities_JPM": {
+      "n_files": 16,
+      "n_train": 13,
+      "n_val": 3,
+      "files_val": [
+        "equities_JPM_13.npy",
+        "equities_JPM_14.npy",
+        "equities_JPM_15.npy"
+      ]
+    },
+    "equities_AMD": {
+      "n_files": 16,
+      "n_train": 13,
+      "n_val": 3,
+      "files_val": [
+        "equities_AMD_13.npy",
+        "equities_AMD_14.npy",
+        "equities_AMD_15.npy"
+      ]
+    },
+    "equities_MSFT": {
+      "n_files": 16,
+      "n_train": 13,
+      "n_val": 3,
+      "files_val": [
+        "equities_MSFT_13.npy",
+        "equities_MSFT_14.npy",
+        "equities_MSFT_15.npy"
+      ]
+    },
+    "equities_NFLX": {
+      "n_files": 16,
+      "n_train": 13,
+      "n_val": 3,
+      "files_val": [
+        "equities_NFLX_13.npy",
+        "equities_NFLX_14.npy",
+        "equities_NFLX_15.npy"
+      ]
+    },
+    "equities_PYPL": {
+      "n_files": 16,
+      "n_train": 13,
+      "n_val": 3,
+      "files_val": [
+        "equities_PYPL_13.npy",
+        "equities_PYPL_14.npy",
+        "equities_PYPL_15.npy"
+      ]
+    },
+    "equities_TSLA": {
+      "n_files": 16,
+      "n_train": 13,
+      "n_val": 3,
+      "files_val": [
+        "equities_TSLA_13.npy",
+        "equities_TSLA_14.npy",
+        "equities_TSLA_15.npy"
+      ]
+    },
+    "equities_DIS": {
+      "n_files": 16,
+      "n_train": 13,
+      "n_val": 3,
+      "files_val": [
+        "equities_DIS_13.npy",
+        "equities_DIS_14.npy",
+        "equities_DIS_15.npy"
+      ]
+    },
+    "equities_CVX": {
+      "n_files": 16,
+      "n_train": 13,
+      "n_val": 3,
+      "files_val": [
+        "equities_CVX_13.npy",
+        "equities_CVX_14.npy",
+        "equities_CVX_15.npy"
+      ]
+    },
+    "equities_IBM": {
+      "n_files": 16,
+      "n_train": 13,
+      "n_val": 3,
+      "files_val": [
+        "equities_IBM_13.npy",
+        "equities_IBM_14.npy",
+        "equities_IBM_15.npy"
+      ]
+    }
+  },
+  "total_train_files": 390,
+  "total_val_files": 90,
+  "empty_val_tickers": [],
+  "train_date_range": "2021-01-01 - 2025-05-01 (Approx)",
+  "val_date_range": "2025-05-01 - 2025-12-01 (Approx)"
+}

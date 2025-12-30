@@ -1,0 +1,14 @@
+{
+  "crypto": {
+    "VOL_SPIKE": 1619,
+    "VOLUME_SPIKE": 788,
+    "VOL_COMPRESSION": 559,
+    "BREAKOUT": 188
+  },
+  "equities": {
+    "BREAKOUT": 30750,
+    "VOL_SPIKE": 5585,
+    "VOL_COMPRESSION": 3344,
+    "VOLUME_SPIKE": 868
+  }
+}

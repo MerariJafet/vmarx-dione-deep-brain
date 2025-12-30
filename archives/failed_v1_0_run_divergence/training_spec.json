@@ -1,0 +1,135 @@
+{
+    "pilot_training_v0.1": {
+        "model": {
+            "base_model": "7B",
+            "base_model_id": "/home/merari-acero/Escritorio/VMarx Dione DB/models/Mistral-7B-v0.1",
+            "method": "QLoRA_4bit",
+            "quantization": "4bit",
+            "lora": {
+                "r": 16,
+                "alpha": 32,
+                "dropout": 0.05,
+                "target_modules": [
+                    "q_proj",
+                    "k_proj",
+                    "v_proj",
+                    "o_proj",
+                    "gate_proj",
+                    "up_proj",
+                    "down_proj"
+                ]
+            }
+        },
+        "training_setup": {
+            "objective": "causal_next_token",
+            "seq_len_strategy": "sliding_window_chunking",
+            "seq_len_effective": 2048,
+            "stride": 512,
+            "microbatch": 1,
+            "grad_accum": 32,
+            "optimizer": "paged_adamw_8bit",
+            "learning_rate": 1.5e-4,
+            "warmup_pct": 0.03,
+            "weight_decay": 0.05,
+            "grad_clip": 1.0,
+            "precision": "FP16",
+            "checkpointing": true
+        },
+        "run_plan": {
+            "steps_target": 50,
+            "eval_every_steps": 100,
+            "save_every_steps": 250,
+            "max_runtime_hours": 6
+        },
+        "validation_criteria": {
+            "must_pass": [
+                "no_nans",
+                "loss_decreasing",
+                "stable_grad_norm",
+                "no_oom"
+            ],
+            "early_stop_if": [
+                "loss_explodes",
+                "nan_detected",
+                "grad_norm_unbounded"
+            ]
+        },
+        "paths": {
+            "tokenized_data": "data/tokenized",
+            "output_dir": "models/pilot_v0_1"
+        }
+    },
+    "training_v1_0": {
+        "model": {
+            "base_model": "Mistral-7B-v0.1",
+            "base_model_id": "/home/merari-acero/Escritorio/VMarx Dione DB/models/Mistral-7B-v0.1",
+            "method": "QLoRA",
+            "quantization": "4bit",
+            "lora": {
+                "r": 16,
+                "alpha": 32,
+                "dropout": 0.05,
+                "target_modules": [
+                    "q_proj",
+                    "k_proj",
+                    "v_proj",
+                    "o_proj",
+                    "gate_proj",
+                    "up_proj",
+                    "down_proj"
+                ]
+            }
+        },
+        "data": {
+            "path": "data/tokenized",
+            "split": {
+                "train_pct": 0.85,
+                "val_pct": 0.15,
+                "method": "time_based_walk_forward"
+            },
+            "sampling": {
+                "crypto_equity_balance": "50/50_if_domain_tag_available_else_proportional_to_sequence_count",
+                "event_reweighting": "if_event_rich_tag_available: upweight_event_rich_windows_1.5x_and_cap_event_rich_fraction_per_batch_at_0.35_else_disabled"
+            }
+        },
+        "training_setup": {
+            "objective": "causal_next_token_prediction",
+            "seq_len_effective": 1536,
+            "microbatch": 1,
+            "grad_accum": 32,
+            "optimizer": "paged_adamw_8bit",
+            "learning_rate": 1.0e-4,
+            "warmup_pct": 0.03,
+            "weight_decay": 0.05,
+            "grad_clip": 1.0,
+            "precision": "FP16",
+            "checkpointing": true,
+            "save_optimizer_state": true,
+            "save_lora_only": true
+        },
+        "run_plan": {
+            "steps_target": 2000,
+            "stages_description": "2000 (Stage1) -> 5000 (Stage2) -> 10000 (Stage3)",
+            "eval_every_steps": 100,
+            "save_every_steps": 200,
+            "max_runtime_hours": 72
+        },
+        "validation_criteria": {
+            "must_pass": [
+                "val_loss_down_vs_pilot",
+                "no_nans",
+                "no_oom",
+                "stable_grad_norm"
+            ],
+            "early_stop_if": [
+                "loss_explodes",
+                "nan_detected",
+                "grad_norm_unbounded"
+            ]
+        },
+        "paths": {
+            "tokenized_data": "data/tokenized",
+            "output_dir": "models/training_v1_0"
+        }
+    }
+}

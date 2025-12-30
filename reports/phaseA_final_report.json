@@ -1,0 +1,190 @@
+{
+  "timestamp": "2025-12-30T09:30:44.291242",
+  "summary": "Phase A Evaluation Complete",
+  "steps": {
+    "preflight": {
+      "phaseA_pip_freeze.txt": "File Exists",
+      "phaseA_nvidia_smi.txt": "File Exists",
+      "phaseA_df_h.txt": "File Exists",
+      "phaseA_checkpoint_inventory.json": {
+        "exists": true,
+        "files": {
+          "model.safetensors": 4818389206,
+          "optimizer.bin": 335923683,
+          "random_states_0.pkl": 14821
+        },
+        "missing": []
+      }
+    },
+    "smoke_load": {
+      "status": "PASS",
+      "steps": [
+        "init_load",
+        "model_loaded",
+        "forward_pass_ok"
+      ],
+      "vram_used_mib": 4331.8125,
+      "load_time_sec": 12.845340013504028
+    },
+    "inference": {
+      "total_time": 229.42642521858215,
+      "runs": 24,
+      "reproducibility": "PASS"
+    },
+    "validations": {
+      "summary": "FAIL",
+      "details": [
+        {
+          "id": "P1_numeric_consistency",
+          "mode": "greedy",
+          "status": "FAIL",
+          "info": "No JSON found"
+        },
+        {
+          "id": "P2_format_following",
+          "mode": "greedy",
+          "status": "FAIL",
+          "info": "Not enough CSV lines found (1)"
+        },
+        {
+          "id": "P3_reasoning_short",
+          "mode": "greedy",
+          "status": "FAIL",
+          "info": "Too long: 131 words"
+        },
+        {
+          "id": "P4_failfast_behavior",
+          "mode": "greedy",
+          "status": "PASS",
+          "info": "Logic found"
+        },
+        {
+          "id": "P1_numeric_consistency",
+          "mode": "greedy",
+          "status": "FAIL",
+          "info": "No JSON found"
+        },
+        {
+          "id": "P2_format_following",
+          "mode": "greedy",
+          "status": "FAIL",
+          "info": "Not enough CSV lines found (1)"
+        },
+        {
+          "id": "P3_reasoning_short",
+          "mode": "greedy",
+          "status": "FAIL",
+          "info": "Too long: 131 words"
+        },
+        {
+          "id": "P4_failfast_behavior",
+          "mode": "greedy",
+          "status": "FAIL",
+          "info": "Missing '50' or counter logic"
+        },
+        {
+          "id": "P1_numeric_consistency",
+          "mode": "greedy",
+          "status": "FAIL",
+          "info": "No JSON found"
+        },
+        {
+          "id": "P2_format_following",
+          "mode": "greedy",
+          "status": "FAIL",
+          "info": "Not enough CSV lines found (1)"
+        },
+        {
+          "id": "P3_reasoning_short",
+          "mode": "greedy",
+          "status": "FAIL",
+          "info": "Too long: 131 words"
+        },
+        {
+          "id": "P4_failfast_behavior",
+          "mode": "greedy",
+          "status": "PASS",
+          "info": "Logic found"
+        },
+        {
+          "id": "P1_numeric_consistency",
+          "mode": "sampling",
+          "status": "FAIL",
+          "info": "No JSON found"
+        },
+        {
+          "id": "P2_format_following",
+          "mode": "sampling",
+          "status": "FAIL",
+          "info": "Not enough CSV lines found (1)"
+        },
+        {
+          "id": "P3_reasoning_short",
+          "mode": "sampling",
+          "status": "FAIL",
+          "info": "Too long: 131 words"
+        },
+        {
+          "id": "P4_failfast_behavior",
+          "mode": "sampling",
+          "status": "PASS",
+          "info": "Logic found"
+        },
+        {
+          "id": "P1_numeric_consistency",
+          "mode": "sampling",
+          "status": "FAIL",
+          "info": "No JSON found"
+        },
+        {
+          "id": "P2_format_following",
+          "mode": "sampling",
+          "status": "FAIL",
+          "info": "Not enough CSV lines found (1)"
+        },
+        {
+          "id": "P3_reasoning_short",
+          "mode": "sampling",
+          "status": "FAIL",
+          "info": "Too long: 127 words"
+        },
+        {
+          "id": "P4_failfast_behavior",
+          "mode": "sampling",
+          "status": "FAIL",
+          "info": "Missing '50' or counter logic"
+        },
+        {
+          "id": "P1_numeric_consistency",
+          "mode": "sampling",
+          "status": "FAIL",
+          "info": "No JSON found"
+        },
+        {
+          "id": "P2_format_following",
+          "mode": "sampling",
+          "status": "FAIL",
+          "info": "Not enough CSV lines found (3)"
+        },
+        {
+          "id": "P3_reasoning_short",
+          "mode": "sampling",
+          "status": "FAIL",
+          "info": "Too long: 173 words"
+        },
+        {
+          "id": "P4_failfast_behavior",
+          "mode": "sampling",
+          "status": "FAIL",
+          "info": "Missing '50' or counter logic"
+        }
+      ]
+    },
+    "consistency": {
+      "status": "PASS",
+      "diff": "",
+      "backup_output": "Return a JSON with keys: add, mul, div. Compute: add=1729+2718, mul=64*128, div=144/12. Output ONLY JSON.\nesponseRequiver throwksmaxories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d element",
+      "match": true
+    }
+  }
+}

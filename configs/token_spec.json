@@ -1,0 +1,199 @@
+{
+    "token_dictionary_v0.1": {
+        "structural_tokens": {
+            "special": [
+                "<S>",
+                "</S>",
+                "<A>",
+                "</A>",
+                "<Q>"
+            ],
+            "patch_id": {
+                "range": [
+                    0,
+                    255
+                ]
+            },
+            "asset_id": {
+                "source": "dataset_piloto_v0.1",
+                "encoding": "int32",
+                "mapping": "stable_sorted_unique(asset_symbol_or_ticker)",
+                "notes": "IDs consecutivos desde 0; el orden se fija por sort asc lexicográfico del string del activo tal como aparece en el dataset."
+            },
+            "timeframe_id": {
+                "encoding": "int32",
+                "mapping": {
+                    "CRYPTO_SPOT_5M_PATCH_1H": 0,
+                    "EQUITIES_1D_PATCH_5D": 1
+                }
+            },
+            "table_id": {
+                "encoding": "int32",
+                "mapping": {
+                    "CRYPTO_SPOT_OHLCV_5M": 0,
+                    "EQUITIES_DAILY_1D": 1
+                }
+            },
+            "regime_flag_id": {
+                "encoding": "int32",
+                "mapping": {
+                    "REG_TREND": 0,
+                    "REG_RANGE": 1,
+                    "REG_HIGH_VOL": 2,
+                    "REG_LOW_VOL": 3,
+                    "REG_RISK_ON": 4,
+                    "REG_RISK_OFF": 5,
+                    "REG_LIQUID": 6,
+                    "REG_ILLIQUID": 7,
+                    "REG_EVENT_DRIVEN": 8,
+                    "REG_UNK": 9
+                }
+            }
+        },
+        "numeric_bins": {
+            "RET": {
+                "bins": 256,
+                "special": [
+                    "MISS",
+                    "OOR_LOW",
+                    "OOR_HIGH"
+                ]
+            },
+            "RVOL": {
+                "bins": 128,
+                "special": [
+                    "MISS",
+                    "OOR_LOW",
+                    "OOR_HIGH"
+                ]
+            },
+            "VLM": {
+                "bins": 128,
+                "special": [
+                    "MISS",
+                    "OOR_LOW",
+                    "OOR_HIGH"
+                ]
+            },
+            "FLOW": {
+                "bins": 128,
+                "special": [
+                    "MISS",
+                    "OOR_LOW",
+                    "OOR_HIGH"
+                ]
+            },
+            "SPREAD": {
+                "bins": 96,
+                "special": [
+                    "MISS",
+                    "OOR_LOW",
+                    "OOR_HIGH"
+                ]
+            },
+            "OI": {
+                "bins": 128,
+                "special": [
+                    "MISS",
+                    "OOR_LOW",
+                    "OOR_HIGH"
+                ]
+            },
+            "FUND": {
+                "bins": 128,
+                "special": [
+                    "MISS",
+                    "OOR_LOW",
+                    "OOR_HIGH"
+                ]
+            },
+            "BASIS": {
+                "bins": 128,
+                "special": [
+                    "MISS",
+                    "OOR_LOW",
+                    "OOR_HIGH"
+                ]
+            }
+        },
+        "event_tokens": {
+            "event_type_id": {
+                "encoding": "int32",
+                "mapping": {
+                    "VOL_SPIKE": 0,
+                    "VOL_COMPRESSION": 1,
+                    "BREAKOUT": 2,
+                    "FAKE_BREAKOUT": 3,
+                    "GAP_MOVE": 4,
+                    "LIQUIDITY_DROP": 5,
+                    "FUNDING_SPIKE": 6,
+                    "OI_SURGE": 7,
+                    "OI_FLUSH": 8,
+                    "LIQUIDATION_CLUSTER": 9,
+                    "MACRO_RELEASE": 10,
+                    "POLICY_SIGNAL": 11,
+                    "NEWS_SENTIMENT": 12,
+                    "RISK_OFF_FLAG": 13,
+                    "VOL_INDEX_SHOCK": 14
+                }
+            },
+            "DIR": [
+                "UP",
+                "DOWN",
+                "NEUTRAL",
+                "MISS"
+            ],
+            "MAG": [
+                "LOW",
+                "MEDIUM",
+                "HIGH",
+                "EXTREME",
+                "MISS"
+            ],
+            "DUR": [
+                "INTRABAR",
+                "SHORT",
+                "MEDIUM",
+                "LONG",
+                "MISS"
+            ],
+            "CONF": [
+                "WEAK",
+                "MODERATE",
+                "STRONG",
+                "MISS"
+            ],
+            "SURP": [
+                "NEG",
+                "NEUTRAL",
+                "POS",
+                "MISS"
+            ],
+            "SRC": [
+                "MARKET",
+                "DERIV",
+                "MACRO",
+                "RISK",
+                "MISS"
+            ]
+        }
+    },
+    "serialization_spec_v0.1": {
+        "sequence_layout": [
+            "<S>",
+            "<A>",
+            "PATCH_BLOCKS",
+            "</A>",
+            "<Q>",
+            "QUERY_TOKENS",
+            "</S>"
+        ],
+        "patch_block_layout": [
+            "P(patch_id)",
+            "R(regime_flag_id)",
+            "PATCH_PAYLOAD_BINS",
+            "EVENTS_IN_PATCH"
+        ],
+        "notes": "Serialización a secuencias int32 por muestra..."
+    }
+}

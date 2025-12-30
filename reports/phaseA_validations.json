@@ -1,0 +1,149 @@
+{
+  "summary": "FAIL",
+  "details": [
+    {
+      "id": "P1_numeric_consistency",
+      "mode": "greedy",
+      "status": "FAIL",
+      "info": "No JSON found"
+    },
+    {
+      "id": "P2_format_following",
+      "mode": "greedy",
+      "status": "FAIL",
+      "info": "Not enough CSV lines found (1)"
+    },
+    {
+      "id": "P3_reasoning_short",
+      "mode": "greedy",
+      "status": "FAIL",
+      "info": "Too long: 131 words"
+    },
+    {
+      "id": "P4_failfast_behavior",
+      "mode": "greedy",
+      "status": "PASS",
+      "info": "Logic found"
+    },
+    {
+      "id": "P1_numeric_consistency",
+      "mode": "greedy",
+      "status": "FAIL",
+      "info": "No JSON found"
+    },
+    {
+      "id": "P2_format_following",
+      "mode": "greedy",
+      "status": "FAIL",
+      "info": "Not enough CSV lines found (1)"
+    },
+    {
+      "id": "P3_reasoning_short",
+      "mode": "greedy",
+      "status": "FAIL",
+      "info": "Too long: 131 words"
+    },
+    {
+      "id": "P4_failfast_behavior",
+      "mode": "greedy",
+      "status": "FAIL",
+      "info": "Missing '50' or counter logic"
+    },
+    {
+      "id": "P1_numeric_consistency",
+      "mode": "greedy",
+      "status": "FAIL",
+      "info": "No JSON found"
+    },
+    {
+      "id": "P2_format_following",
+      "mode": "greedy",
+      "status": "FAIL",
+      "info": "Not enough CSV lines found (1)"
+    },
+    {
+      "id": "P3_reasoning_short",
+      "mode": "greedy",
+      "status": "FAIL",
+      "info": "Too long: 131 words"
+    },
+    {
+      "id": "P4_failfast_behavior",
+      "mode": "greedy",
+      "status": "PASS",
+      "info": "Logic found"
+    },
+    {
+      "id": "P1_numeric_consistency",
+      "mode": "sampling",
+      "status": "FAIL",
+      "info": "No JSON found"
+    },
+    {
+      "id": "P2_format_following",
+      "mode": "sampling",
+      "status": "FAIL",
+      "info": "Not enough CSV lines found (1)"
+    },
+    {
+      "id": "P3_reasoning_short",
+      "mode": "sampling",
+      "status": "FAIL",
+      "info": "Too long: 131 words"
+    },
+    {
+      "id": "P4_failfast_behavior",
+      "mode": "sampling",
+      "status": "PASS",
+      "info": "Logic found"
+    },
+    {
+      "id": "P1_numeric_consistency",
+      "mode": "sampling",
+      "status": "FAIL",
+      "info": "No JSON found"
+    },
+    {
+      "id": "P2_format_following",
+      "mode": "sampling",
+      "status": "FAIL",
+      "info": "Not enough CSV lines found (1)"
+    },
+    {
+      "id": "P3_reasoning_short",
+      "mode": "sampling",
+      "status": "FAIL",
+      "info": "Too long: 127 words"
+    },
+    {
+      "id": "P4_failfast_behavior",
+      "mode": "sampling",
+      "status": "FAIL",
+      "info": "Missing '50' or counter logic"
+    },
+    {
+      "id": "P1_numeric_consistency",
+      "mode": "sampling",
+      "status": "FAIL",
+      "info": "No JSON found"
+    },
+    {
+      "id": "P2_format_following",
+      "mode": "sampling",
+      "status": "FAIL",
+      "info": "Not enough CSV lines found (3)"
+    },
+    {
+      "id": "P3_reasoning_short",
+      "mode": "sampling",
+      "status": "FAIL",
+      "info": "Too long: 173 words"
+    },
+    {
+      "id": "P4_failfast_behavior",
+      "mode": "sampling",
+      "status": "FAIL",
+      "info": "Missing '50' or counter logic"
+    }
+  ]
+}

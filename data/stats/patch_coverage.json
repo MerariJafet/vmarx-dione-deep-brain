@@ -1,0 +1,28 @@
+{
+  "patch_crypto_1h": {
+    "rows": 29384,
+    "missing_rates": {
+      "RET": 0.0,
+      "RVOL": 0.0,
+      "VLM": 0.0,
+      "FLOW": 1.0,
+      "SPREAD": 1.0,
+      "OI": 1.0,
+      "FUND": 1.0,
+      "BASIS": 1.0
+    }
+  },
+  "patch_equities_5d": {
+    "rows": 43200,
+    "missing_rates": {
+      "RET": 0.1,
+      "RVOL": 0.0,
+      "VLM": 0.0,
+      "FLOW": 1.0,
+      "SPREAD": 1.0,
+      "OI": 1.0,
+      "FUND": 1.0,
+      "BASIS": 1.0
+    }
+  }
+}

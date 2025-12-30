@@ -1,0 +1,21 @@
+{
+  "path": "models/training_v1_0/checkpoint_2000",
+  "files": [
+    {
+      "rel_path": "model.safetensors",
+      "size_bytes": 4818389206,
+      "name": "model.safetensors"
+    },
+    {
+      "rel_path": "optimizer.bin",
+      "size_bytes": 335923683,
+      "name": "optimizer.bin"
+    },
+    {
+      "rel_path": "random_states_0.pkl",
+      "size_bytes": 14821,
+      "name": "random_states_0.pkl"
+    }
+  ],
+  "total_size_bytes": 5154327710
+}

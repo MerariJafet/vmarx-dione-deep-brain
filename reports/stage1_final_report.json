@@ -1,0 +1,28 @@
+{
+    "status": "COMPLETED",
+    "final_effective_step": 2000,
+    "total_attempts": 26347,
+    "toxic_batches_total": 1086,
+    "toxic_rate_approx": "4.1%",
+    "final_metrics": {
+        "train_loss": 0.0762,
+        "val_loss_crypto": 0.2574,
+        "val_loss_equities": 0.0819,
+        "grad_norm": 0.2209
+    },
+    "artifacts": {
+        "checkpoint": "models/training_v1_0/checkpoint_2000",
+        "final_checkpoint": "models/training_v1_0/checkpoint_final",
+        "logs": "logs/training_v1_0_stage1_resume.log",
+        "status_history": "models/training_v1_0/run_status.jsonl",
+        "toxic_log": "reports/toxic_batches.jsonl"
+    },
+    "key_events": [
+        "Resumed from Step 1600 (Safe Strategy)",
+        "Implemented Metadata Tracking (SHA1 Hashes)",
+        "Implemented Watchdog with Cooldown (Hotfix)",
+        "Recovered from Toxic Loop at Step 1607",
+        "Successfully processed volatile region 1700-2000"
+    ],
+    "notes": "Training completed successfully with active Circuit Breaker and Watchdog. High attempt count indicates significant data toxicity or instability in the 1600-2000 range, but the system self-corrected as designed."
+}

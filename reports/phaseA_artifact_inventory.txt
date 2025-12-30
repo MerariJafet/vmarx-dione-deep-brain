@@ -1,0 +1,49 @@
+logs/:
+total 1,7M
+-rw-rw-r-- 1 merari-acero merari-acero 105K dic 23 13:01 loss_history_raw.txt
+-rw-rw-r-- 1 merari-acero merari-acero  658 dic 30 09:30 phaseA_consistency.log
+-rw-rw-r-- 1 merari-acero merari-acero  709 dic 30 09:30 phaseA_inference_suite.log
+-rw-rw-r-- 1 merari-acero merari-acero 6,0K dic 30 09:30 phaseA_report_gen.log
+-rw-rw-r-- 1 merari-acero merari-acero  629 dic 30 09:25 phaseA_smoke_load.log
+-rw-rw-r-- 1 merari-acero merari-acero  241 dic 30 09:14 phaseA_smoke_load_v2.log
+-rw-rw-r-- 1 merari-acero merari-acero  629 dic 30 09:15 phaseA_smoke_load_v3.log
+-rw-rw-r-- 1 merari-acero merari-acero 3,3K dic 30 09:30 phaseA_validators.log
+-rw-rw-r-- 1 merari-acero merari-acero  13K dic 25 14:44 resume_reentrant_test.log
+-rw-rw-r-- 1 merari-acero merari-acero  19K dic 25 13:10 resume_test.log
+drwxrwxr-x 2 merari-acero merari-acero 4,0K dic 25 14:50 smoke_test_artifacts
+-rw-rw-r-- 1 merari-acero merari-acero 6,2K dic 25 14:51 smoke_test.log
+-rw-rw-r-- 1 merari-acero merari-acero 103K dic 23 20:47 training_resume_step200.log
+-rw-rw-r-- 1 merari-acero merari-acero  29K dic 23 20:49 training_resume_step200_try2.log
+-rw-rw-r-- 1 merari-acero merari-acero 121K dic 24 14:55 training_resume_step200_try4.log
+-rw-rw-r-- 1 merari-acero merari-acero 4,8K dic 24 14:54 training_stage2_multidomain.log
+-rw-rw-r-- 1 merari-acero merari-acero 6,2K dic 24 14:54 training_stage2_multidomain_v2.log
+-rw-rw-r-- 1 merari-acero merari-acero 6,1K dic 24 14:54 training_stage2_multidomain_v3.log
+-rw-rw-r-- 1 merari-acero merari-acero  12K dic 24 14:56 training_stage2_multidomain_v4.log
+-rw-rw-r-- 1 merari-acero merari-acero 7,9K dic 24 15:53 training_stage2_multidomain_v5.log
+-rw-rw-r-- 1 merari-acero merari-acero  80K dic 24 19:09 training_stage2_multidomain_v6.log
+-rw-rw-r-- 1 merari-acero merari-acero 267K dic 23 19:20 training_v1_0_stage1.log
+-rw-rw-r-- 1 merari-acero merari-acero 552K dic 28 10:25 training_v1_0_stage1_resume_20251225_145405.log
+-rw-rw-r-- 1 merari-acero merari-acero 250K dic 30 01:28 training_v1_0_stage1_resume.log
+
+reports/:
+total 1,4M
+-rw-rw-r-- 1 merari-acero merari-acero  418 dic 24 14:45 domain_split_counts_v0_2.json
+-rw-rw-r-- 1 merari-acero merari-acero  511 dic 28 23:20 p0_stage1_recovery_report.json
+-rw-rw-r-- 1 merari-acero merari-acero  560 dic 28 23:24 p1_truth_progress_fix_report.json
+-rw-rw-r-- 1 merari-acero merari-acero    0 dic 30 09:38 phaseA_artifact_inventory.txt
+-rw-rw-r-- 1 merari-acero merari-acero  447 dic 30 09:17 phaseA_checkpoint_2000_inventory.json
+-rw-rw-r-- 1 merari-acero merari-acero 1,3K dic 30 09:30 phaseA_checkpoint_consistency.json
+-rw-rw-r-- 1 merari-acero merari-acero  157 dic 30 09:24 phaseA_checkpoint_inventory.json
+-rw-rw-r-- 1 merari-acero merari-acero  409 dic 30 09:24 phaseA_df_h.txt
+-rw-rw-r-- 1 merari-acero merari-acero 6,0K dic 30 09:30 phaseA_final_report.json
+-rw-rw-r-- 1 merari-acero merari-acero   81 dic 30 09:30 phaseA_inference_metrics.json
+-rw-rw-r-- 1 merari-acero merari-acero  27K dic 30 09:30 phaseA_inference_outputs.jsonl
+-rw-rw-r-- 1 merari-acero merari-acero 1,7K dic 30 09:24 phaseA_nvidia_smi.txt
+-rw-rw-r-- 1 merari-acero merari-acero 4,4K dic 30 09:24 phaseA_pip_freeze.txt
+-rw-rw-r-- 1 merari-acero merari-acero 1,7K dic 30 09:38 phaseA_portfolio_summary.md
+-rw-rw-r-- 1 merari-acero merari-acero  168 dic 30 09:25 phaseA_smoke_load_summary.json
+-rw-rw-r-- 1 merari-acero merari-acero 3,3K dic 30 09:30 phaseA_validations.json
+-rw-rw-r-- 1 merari-acero merari-acero 1,2K dic 30 08:59 stage1_final_report.json
+-rw-rw-r-- 1 merari-acero merari-acero 8,7K dic 23 13:02 step_100_metrics.json
+-rw-rw-r-- 1 merari-acero merari-acero 1,9K dic 23 13:02 step_100_report.md
+-rw-rw-r-- 1 merari-acero merari-acero 1,3M dic 30 01:22 toxic_batches.jsonl

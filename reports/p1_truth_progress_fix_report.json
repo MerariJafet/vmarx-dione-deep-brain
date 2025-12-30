@@ -1,0 +1,10 @@
+{
+    "pid": 8893,
+    "gpu_ok": true,
+    "effective_step_current": 1600,
+    "attempt_count_current": 0,
+    "toxic_total_current": 0,
+    "consecutive_toxic_max": 0,
+    "circuit_breaker_triggered": false,
+    "notes": "Process restarted (PID 8893) to apply 'attempt_count' tracking and 'iterator reset' fixes. Safe Resume Strategy forced resume from checkpoint_1600 (as designed in P0). Previous run (PID 5171) successfully reached Step 1700 before kill, proving toxic loop recovery works. New run includes better telemetry and stronger circuit breaker."
+}

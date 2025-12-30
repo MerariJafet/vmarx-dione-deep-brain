@@ -1,0 +1,91 @@
+project:
+  name: "VMarx Dione DB"
+  version: "0.1.0"
+
+paths:
+  raw: "data/raw"
+  aligned: "data/aligned"
+  patch: "data/patch"
+  events: "data/events"
+  stats: "data/stats"
+  logs: "logs"
+
+exchanges:
+  BINANCE: 1
+  BYBIT: 2
+
+domains:
+  crypto:
+    timeframe_base: "5m"
+    patch_size: "1h"
+    patch_window: 12
+  equities:
+    timeframe_base: "1d"
+    patch_size: "5d"
+    patch_window: 5
+
+rate_limits:
+  binance_spot: 10
+  binance_futures: 5
+  bybit: 10
+  stooq: 1
+
+auth:
+  use_auth: false
+  # api_keys:
+  #   BINANCE: {key: "", secret: ""}
+  #   BYBIT: {key: "", secret: ""}
+
+crypto_date_range:
+  start: "2025-07-01"
+  end: "2025-12-01"
+
+equities_date_range:
+  start: "2021-01-01"
+  end: "2025-12-01"
+
+symbols:
+  crypto:
+    - "BTCUSDT"
+    - "ETHUSDT"
+    - "BNBUSDT"
+    - "SOLUSDT"
+    - "XRPUSDT"
+    - "ADAUSDT"
+    - "DOGEUSDT"
+    - "AVAXUSDT"
+  equities:
+    - "AAPL"
+    - "MSFT"
+    - "AMZN"
+    - "GOOGL"
+    - "META"
+    - "TSLA"
+    - "NVDA"
+    - "AMD"
+    - "INTC"
+    - "NFLX"
+    - "JPM"
+    - "BAC"
+    - "WMT"
+    - "KO"
+    - "PEP"
+    - "XOM"
+    - "CVX"
+    - "DIS"
+    - "NKE"
+    - "BA"
+    - "GE"
+    - "T"
+    - "V"
+    - "MA"
+    - "PYPL"
+    - "ORCL"
+    - "CSCO"
+    - "IBM"
+    - "QCOM"
+    - "CRM"
+
+schemas:
+  partitioning:
+    hierarchical: ["domain", "table", "exchange", "symbol", "year_month"]

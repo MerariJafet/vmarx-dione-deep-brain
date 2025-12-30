@@ -1,0 +1,15 @@
+{
+  "total_npy_files": 1302,
+  "total_crypto_npy": 822,
+  "total_equity_npy": 480,
+  "train_crypto_npy": 692,
+  "val_crypto_npy": 130,
+  "train_equity_npy": 390,
+  "val_equity_npy": 90,
+  "equity_detection_method": "filename_prefix (equities_*)",
+  "n_patch_detected_summary": {
+    "crypto": "256 (Fixed Config)",
+    "equity": "256 (Observed Max ID 255)"
+  },
+  "split_method": "time_based_walk_forward_per_domain"
+}

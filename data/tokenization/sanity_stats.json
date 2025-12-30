@@ -1,0 +1,13 @@
+{
+  "sequences": {
+    "count": 808,
+    "min_len": 5801,
+    "mean_len": 8144.434405940594,
+    "max_len": 17898
+  },
+  "events": {
+    "mean_per_sample": 798.684405940594,
+    "max_per_sample": 2190,
+    "total_events_detected": 645337
+  }
+}

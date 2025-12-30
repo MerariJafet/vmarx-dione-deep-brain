@@ -1,0 +1,23 @@
+{
+  "domains": [
+    "crypto",
+    "equities"
+  ],
+  "symbols": {
+    "crypto_count": 8,
+    "equities_count": 30
+  },
+  "date_ranges": {
+    "crypto": "{'start': '2025-07-01', 'end': '2025-12-01'}",
+    "equities": "{'start': '2021-01-01', 'end': '2025-12-01'}"
+  },
+  "rows_by_table": {
+    "patch_crypto_1h": 29384,
+    "patch_equities_5d": 43200
+  },
+  "blocked_sources": {
+    "Binance Futures": "DNS_BLOCKED",
+    "Bybit": "HTTP_403"
+  },
+  "compliance_note": "DATA->TOKENS contract v0.1 cumplido"
+}

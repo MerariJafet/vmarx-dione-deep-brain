@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "steps": [
+    "init_load",
+    "model_loaded",
+    "forward_pass_ok"
+  ],
+  "vram_used_mib": 4331.8125,
+  "load_time_sec": 12.845340013504028
+}

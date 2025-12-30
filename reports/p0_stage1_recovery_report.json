@@ -1,0 +1,14 @@
+{
+    "gpu_ok": true,
+    "reboot_confirmed": true,
+    "resume_checkpoint": "checkpoint_1600",
+    "pid": 5171,
+    "effective_step_start": 1600,
+    "effective_step_reached": 1696,
+    "attempt_count_delta": 0,
+    "toxic_total_delta": 5,
+    "consecutive_toxic_max": 1,
+    "circuit_breaker_triggered": false,
+    "fallback_used": null,
+    "notes": "Recovered successfully. Passed critical step 1607. Encountering intermittent toxic batches at 1695 but handling them via skip/retry loop without stalling."
+}
