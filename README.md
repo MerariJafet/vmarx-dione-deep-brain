@@ -1,60 +1,62 @@
-# VMarx Dione DB
+# VMarx Dione Deep Brain — Stage 1 (Base Model)
 
-VMarx Dione Deep Brain Project.
+[![CI](https://github.com/MerariJafet/vmarx-dione-deep-brain/actions/workflows/ci.yml/badge.svg)](https://github.com/MerariJafet/vmarx-dione-deep-brain/actions/workflows/ci.yml)
 
-## Phase A: Post-Stage1 Evaluation
+**VMarx Dione DB** is a high-stability training pipeline for Large Language Models (LLMs) specialized in financial time-series and multi-domain analysis. This repository showcases the completion of **Stage 1 (Base Knowledge Acquisition)** and the rigorous **Phase A Evaluation** protocols.
 
-To validate the trained model (`checkpoint_final`), we use a suite of evaluation scripts found in `scripts/`.
+## 🚀 Quickstart
 
-### Run Evaluation Suite
+Run the full evaluation suite in one command:
 
-1. **Environment Setup**:
-   ```bash
-   source .venv/bin/activate
-   ```
+```bash
+# Setup
+make setup
 
-2. **Run Smoke Load Test**:
-   ```bash
-   python -m scripts.phaseA_smoke_load
-   ```
+# Run Phase A Evaluation
+make phasea
+```
 
-3. **Run Inference Suite**:
-   ```bash
-   python -m scripts.phaseA_inference_suite
-   ```
-   This will generate `reports/phaseA_inference_outputs.jsonl`.
+## 🎯 Project Goal
 
-4. **Verify Outputs**:
-   ```bash
-   python -m scripts.phaseA_validators
-   # Check reports/phaseA_validations.json
-   ```
+The objective is to develop a specialized 7B parameter model (Mistral-7B base) capable of understanding market dynamics across Crypto and Equity domains. 
 
-5. **Consistency Check**:
-   ```bash
-   python -m scripts.phaseA_consistency
-   ```
+- **Task**: Financial Time-Series Forecasting & Analysis.
+- **Model**: QLoRA 4-bit Adapter (Mistral-7B-v0.1 Base).
+- **Stage 1 Result**: Foundation layers trained to Step 2000 with managed data toxicity.
 
-6. **Generate Final Report**:
-   ```bash
-   python -m scripts.phaseA_report_gen
-   ```
-   Final report will be at `reports/phaseA_final_report.json`.
+## 📊 Evaluation Results (Phase A)
 
-## Directory Structure
-- `models/`: Checkpoints (including `checkpoint_final`).
-- `logs/`: Execution logs.
-- `reports/`: Evaluation artifacts (JSONs, CSVs).
-- `scripts/`: Evaluation and Training scripts.
+| Metric | Status | Note |
+| :--- | :--- | :--- |
+| **Smoke Load** | ✅ PASS | Loads in ~12s using 4.3GB VRAM |
+| **Reproducibility** | ✅ PASS | Identical greedy output across seeds |
+| **Consistency** | ✅ PASS | Canonical matches Backup checkpoint |
+| **Instruction Following**| ⚠️ PARTIAL | Formatting issues detected (Pending Stage 2) |
 
-## Evidence & Results (Phase A)
-The full evaluation results are available in `reports/`:
-- **Final Report**: [phaseA_final_report.json](reports/phaseA_final_report.json)
-- **Validation Details**: [phaseA_validations.json](reports/phaseA_validations.json)
-- **Consistency Check**: [phaseA_checkpoint_consistency.json](reports/phaseA_checkpoint_consistency.json)
+**Final Training Metrics (Step 2000):**
+- **Train Loss**: 0.0762
+- **Val Loss (Crypto)**: 0.2574
+- **Val Loss (Equities)**: 0.0819
 
-### Summary
-- **Smoke Load**: PASS
-- **Reproducibility**: PASS
-- **Consistency**: PASS (Canonical matches Backup)
-- **Validations**: PARTIAL FAIL (See reports for details - expected pending model tuning)
+## 🛠️ Repository Structure
+
+- `scripts/`: Master entry points and evaluation wrappers.
+- `src/`: Core pipeline (Ingestion -> Processing -> Training).
+- `docs/`: [Detailed Usage](docs/USAGE.md) and [Architecture](docs/ARCHITECTURE.md).
+- `reports/`: JSON artifacts containing full evaluation traces.
+
+## 🔍 Reproducibility & Consistency
+
+Phase A implements a "Zero-Retrain" verification suite that ensures:
+1. **Bit-Level Integrity**: RNG states and weights are consistent.
+2. **Execution Stability**: No OOMs or NaNs during forward pass.
+3. **Deterministic Output**: Fixed seeds produce bit-identical results in greedy mode.
+
+Full reproducibility logs are found in `reports/phaseA_inference_outputs.jsonl`.
+
+## 📦 Model Weights
+
+Model weights are local-only due to size. See [MODEL_WEIGHTS.md](MODEL_WEIGHTS.md) for details on how to acquire or set them up locally.
+
+---
+*Ready for Stage 2: Instruction Fine-Tuning.*
