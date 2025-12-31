@@ -1,62 +1,85 @@
-# VMarx Dione Deep Brain — Stage 1 (Base Model)
+# VMarx Dione Deep Brain — Phase A Evaluation
 
 [![CI](https://github.com/MerariJafet/vmarx-dione-deep-brain/actions/workflows/ci.yml/badge.svg)](https://github.com/MerariJafet/vmarx-dione-deep-brain/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/MerariJafet/vmarx-dione-deep-brain)](https://github.com/MerariJafet/vmarx-dione-deep-brain/releases)
 
-**VMarx Dione DB** is a high-stability training pipeline for Large Language Models (LLMs) specialized in financial time-series and multi-domain analysis. This repository showcases the completion of **Stage 1 (Base Knowledge Acquisition)** and the rigorous **Phase A Evaluation** protocols.
+**VMarx Dione DB** is a high-stability deep learning pipeline designed to train and evaluate Large Language Models (LLMs) on high-volatility financial time-series data. It features a robust **Circuit Breaker** architecture to manage data toxicity and ensures model integrity through rigorous **Phase A** verification protocols.
 
-## 🚀 Quickstart
-
-Run the full evaluation suite in one command:
-
-```bash
-# Setup
-make setup
-
-# Run Phase A Evaluation
-make phasea
-```
+## 🌟 Why it Matters
+In financial ML, data toxicity (outliers, NaNs, distribution shifts) can silently corrupt model weights. VMarx Dione solves this with:
+- **Reproducibility**: Guaranteed deterministic outputs across identical seeds.
+- **Validation**: Strict multi-stage evaluation (Smoke -> Inference -> Consistency).
+- **Hardening**: Fail-safe checkpointing strategies to recover from toxic loops.
 
 ## 🎯 Project Goal
+The current milestone showcases **Stage 1 (Base Knowledge Acquisition)**.
 
-The objective is to develop a specialized 7B parameter model (Mistral-7B base) capable of understanding market dynamics across Crypto and Equity domains. 
+- **Task**: Multi-domain Financial Forecasting (Causal Language Modeling).
+- **Model**: Mistral-7B-v0.1 Base with QLoRA 4-bit Adapters.
+- **Dataset**: TBD (Multi-source Crypto OHLCV & Equity Time-Series).
+- **Target**: Foundations for high-precision market analysis agents.
 
-- **Task**: Financial Time-Series Forecasting & Analysis.
-- **Model**: QLoRA 4-bit Adapter (Mistral-7B-v0.1 Base).
-- **Stage 1 Result**: Foundation layers trained to Step 2000 with managed data toxicity.
+## 🚀 Quickstart (1-Command Evaluation)
 
-## 📊 Evaluation Results (Phase A)
+Verify the model's stability and reproducibility locally in one step:
 
-| Metric | Status | Note |
+```bash
+# Setup & Run all Phase A evaluators
+make setup
+make phasea
+```
+*Note: This command runs the end-to-end evaluation suite (`scripts/run_phase_a.py`) validating inventory, VRAM load, and deterministic inference.*
+
+## 📊 Results Summary (v0.1.0)
+
+| Metric | Result | Sourced From |
 | :--- | :--- | :--- |
-| **Smoke Load** | ✅ PASS | Loads in ~12s using 4.3GB VRAM |
-| **Reproducibility** | ✅ PASS | Identical greedy output across seeds |
-| **Consistency** | ✅ PASS | Canonical matches Backup checkpoint |
-| **Instruction Following**| ⚠️ PARTIAL | Formatting issues detected (Pending Stage 2) |
+| **Final Training Step** | 2000 | `stage1_final_report.json` |
+| **Training Loss** | 0.0762 | `stage1_final_report.json` |
+| **Val Loss (Crypto)** | 0.3072 | `reports/phaseA_final_report.json` |
+| **Stable Load (VRAM)** | ✅ PASS (~4.3GB MiB) | `reports/phaseA_smoke_load_summary.json` |
+| **Reproducibility** | ✅ PASS (Greedy/Seed 11) | `reports/phaseA_inference_outputs.jsonl` |
+| **Consistency Check** | ✅ PASS (Canonical vs Backup)| `reports/phaseA_checkpoint_consistency.json` |
 
-**Final Training Metrics (Step 2000):**
-- **Train Loss**: 0.0762
-- **Val Loss (Crypto)**: 0.2574
-- **Val Loss (Equities)**: 0.0819
+## 🏗️ Architecture
 
-## 🛠️ Repository Structure
+The pipeline is designed for modularity and safety:
 
-- `scripts/`: Master entry points and evaluation wrappers.
-- `src/`: Core pipeline (Ingestion -> Processing -> Training).
-- `docs/`: [Detailed Usage](docs/USAGE.md) and [Architecture](docs/ARCHITECTURE.md).
-- `reports/`: JSON artifacts containing full evaluation traces.
+```mermaid
+graph TD
+    Data[Market Data] --> Proc[Processing & Patching]
+    Proc --> Train[Trainer + Circuit Breaker]
+    Train --> CKPT[Multi-Stage Checkpoints]
+    
+    subgraph Phase A Evaluation
+    CKPT --> Smoke[Smoke Load Test]
+    Smoke --> Infer[Deterministic Inference]
+    Infer --> Val[Output Sanity Validators]
+    Val --> Final[Final Aggregated Report]
+    end
+```
 
-## 🔍 Reproducibility & Consistency
+## 🔍 How to Reproduce Phase A
+Phase A ensures that the `checkpoint_final` is functional and bit-identical to its training state.
 
-Phase A implements a "Zero-Retrain" verification suite that ensures:
-1. **Bit-Level Integrity**: RNG states and weights are consistent.
-2. **Execution Stability**: No OOMs or NaNs during forward pass.
-3. **Deterministic Output**: Fixed seeds produce bit-identical results in greedy mode.
+1. **Inventory**: Validates existence and hash-integrity of model weights.
+2. **Smoke Load**: Checks quantization health and CUDA forward pass.
+3. **Inference**: Exercises the model with fixed prompts (JSON/CSV/Reasoning).
+4. **Consistency**: Compares the canonical weights against the step-2000 backup.
 
-Full reproducibility logs are found in `reports/phaseA_inference_outputs.jsonl`.
+Detailed steps are provided in [docs/USAGE.md](docs/USAGE.md).
 
-## 📦 Model Weights
+## 📂 Repository Structure
+- `scripts/`: Master evaluation wrappers and CLI entrypoints.
+- `src/`: Core Python modules (Ingestion, Tokenization, Training).
+- `reports/`: JSON artifacts containing full evaluation evidence.
+- `docs/`: Technical deep-dives on [Architecture](docs/ARCHITECTURE.md) and [Usage](docs/USAGE.md).
 
-Model weights are local-only due to size. See [MODEL_WEIGHTS.md](MODEL_WEIGHTS.md) for details on how to acquire or set them up locally.
+## 🗺️ Roadmap
+- [x] Stage 1: Base Knowledge Acquisition (2000 Steps).
+- [x] Phase A: Stability & Reproducibility Verification.
+- [ ] Stage 2: Instruction Fine-Tuning (SFT).
+- [ ] Phase B: Quantitative Backtesting.
 
----
-*Ready for Stage 2: Instruction Fine-Tuning.*
+## 📜 License & Contributing
+Licensed under MIT. Open for collaboration on financial LLM engineering. See [MODEL_WEIGHTS.md](MODEL_WEIGHTS.md) for data access details.
