@@ -1,6 +1,7 @@
 {
-  "status": "PASS",
+  "status": "WARN",
   "diff": "",
-  "backup_output": "Return a JSON with keys: add, mul, div. Compute: add=1729+2718, mul=64*128, div=144/12. Output ONLY JSON.\nesponseRequiver throwksmaxories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d element",
-  "match": true
+  "backup_output": "Return a JSON with keys: add, mul, div. Compute: add=1729+2718, mul=64*128, div=144/12. Output ONLY JSON.\n\n```\n{\n  \"add\": 4447,\n  \"mul\": 8384,\n  \"div\": 1.1666666666666667\n}\n```\n\n## Solution\n\n```\n{\n  \"add\": 1729 + 2718,\n  \"mul\": 64 * 128,\n  \"div\": 144 / 12\n}\n```\n\n## Explanation\n\nThe solution is a simple JSON object with three keys: `add`, `mul`, and `div`. The values for each key are computed using JavaScript expressions.\n\nThe `add` key is computed by adding the values 1729 and 2718.\n\nThe `mul` key is computed by multiplying the values 64 and ",
+  "match": false,
+  "canonical_output": "Return a JSON with keys: add, mul, div. Compute: add=1729+2718, mul=64*128, div=144/12. Output ONLY JSON.\n\n\\newpage\n\\begin{VerbatimOut}\n{\"add\": 4447, \"mul\": 8192, \"div\": 12}\n\\end{VerbatimOut}"
 }

@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-12-30T09:30:44.291242",
+  "timestamp": "2025-12-31T05:54:28.496365",
   "summary": "Phase A Evaluation Complete",
   "steps": {
     "preflight": {
@@ -9,8 +9,9 @@
       "phaseA_checkpoint_inventory.json": {
         "exists": true,
         "files": {
-          "model.safetensors": 4818389206,
-          "optimizer.bin": 335923683,
+          "model.safetensors": 4677823126,
+          "optimizer.bin": 14328331,
+          "scaler.pt": 1383,
           "random_states_0.pkl": 14821
         },
         "missing": []
@@ -23,11 +24,11 @@
         "model_loaded",
         "forward_pass_ok"
       ],
-      "vram_used_mib": 4331.8125,
-      "load_time_sec": 12.845340013504028
+      "vram_used_mib": 4197.3125,
+      "load_time_sec": 13.135830402374268
     },
     "inference": {
-      "total_time": 229.42642521858215,
+      "total_time": 78.21586918830872,
       "runs": 24,
       "reproducibility": "PASS"
     },
@@ -38,19 +39,19 @@
           "id": "P1_numeric_consistency",
           "mode": "greedy",
           "status": "FAIL",
-          "info": "No JSON found"
+          "info": "JSON Parse Error: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)"
         },
         {
           "id": "P2_format_following",
           "mode": "greedy",
           "status": "FAIL",
-          "info": "Not enough CSV lines found (1)"
+          "info": "Row content mismatch"
         },
         {
           "id": "P3_reasoning_short",
           "mode": "greedy",
-          "status": "FAIL",
-          "info": "Too long: 131 words"
+          "status": "PASS",
+          "info": "99 words, approx 5 bullets"
         },
         {
           "id": "P4_failfast_behavior",
@@ -62,43 +63,43 @@
           "id": "P1_numeric_consistency",
           "mode": "greedy",
           "status": "FAIL",
-          "info": "No JSON found"
+          "info": "JSON Parse Error: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)"
         },
         {
           "id": "P2_format_following",
           "mode": "greedy",
           "status": "FAIL",
-          "info": "Not enough CSV lines found (1)"
+          "info": "Row content mismatch"
         },
         {
           "id": "P3_reasoning_short",
           "mode": "greedy",
-          "status": "FAIL",
-          "info": "Too long: 131 words"
+          "status": "PASS",
+          "info": "101 words, approx 5 bullets"
         },
         {
           "id": "P4_failfast_behavior",
           "mode": "greedy",
-          "status": "FAIL",
-          "info": "Missing '50' or counter logic"
+          "status": "PASS",
+          "info": "Logic found"
         },
         {
           "id": "P1_numeric_consistency",
           "mode": "greedy",
           "status": "FAIL",
-          "info": "No JSON found"
+          "info": "JSON Parse Error: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)"
         },
         {
           "id": "P2_format_following",
           "mode": "greedy",
           "status": "FAIL",
-          "info": "Not enough CSV lines found (1)"
+          "info": "Row content mismatch"
         },
         {
           "id": "P3_reasoning_short",
           "mode": "greedy",
-          "status": "FAIL",
-          "info": "Too long: 131 words"
+          "status": "PASS",
+          "info": "94 words, approx 5 bullets"
         },
         {
           "id": "P4_failfast_behavior",
@@ -110,7 +111,7 @@
           "id": "P1_numeric_consistency",
           "mode": "sampling",
           "status": "FAIL",
-          "info": "No JSON found"
+          "info": "JSON Parse Error: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)"
         },
         {
           "id": "P2_format_following",
@@ -121,8 +122,32 @@
         {
           "id": "P3_reasoning_short",
           "mode": "sampling",
+          "status": "PASS",
+          "info": "69 words, approx 5 bullets"
+        },
+        {
+          "id": "P4_failfast_behavior",
+          "mode": "sampling",
           "status": "FAIL",
-          "info": "Too long: 131 words"
+          "info": "Missing '50' or counter logic"
+        },
+        {
+          "id": "P1_numeric_consistency",
+          "mode": "sampling",
+          "status": "PASS",
+          "info": "Math Correct"
+        },
+        {
+          "id": "P2_format_following",
+          "mode": "sampling",
+          "status": "FAIL",
+          "info": "Not enough CSV lines found (1)"
+        },
+        {
+          "id": "P3_reasoning_short",
+          "mode": "sampling",
+          "status": "PASS",
+          "info": "108 words, approx 5 bullets"
         },
         {
           "id": "P4_failfast_behavior",
@@ -134,57 +159,34 @@
           "id": "P1_numeric_consistency",
           "mode": "sampling",
           "status": "FAIL",
-          "info": "No JSON found"
+          "info": "JSON Parse Error: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)"
         },
         {
           "id": "P2_format_following",
           "mode": "sampling",
           "status": "FAIL",
-          "info": "Not enough CSV lines found (1)"
+          "info": "Row content mismatch"
         },
         {
           "id": "P3_reasoning_short",
           "mode": "sampling",
-          "status": "FAIL",
-          "info": "Too long: 127 words"
+          "status": "PASS",
+          "info": "83 words, approx 5 bullets"
         },
         {
           "id": "P4_failfast_behavior",
           "mode": "sampling",
-          "status": "FAIL",
-          "info": "Missing '50' or counter logic"
-        },
-        {
-          "id": "P1_numeric_consistency",
-          "mode": "sampling",
-          "status": "FAIL",
-          "info": "No JSON found"
-        },
-        {
-          "id": "P2_format_following",
-          "mode": "sampling",
-          "status": "FAIL",
-          "info": "Not enough CSV lines found (3)"
-        },
-        {
-          "id": "P3_reasoning_short",
-          "mode": "sampling",
-          "status": "FAIL",
-          "info": "Too long: 173 words"
-        },
-        {
-          "id": "P4_failfast_behavior",
-          "mode": "sampling",
-          "status": "FAIL",
-          "info": "Missing '50' or counter logic"
+          "status": "PASS",
+          "info": "Logic found"
         }
       ]
     },
     "consistency": {
-      "status": "PASS",
+      "status": "WARN",
       "diff": "",
-      "backup_output": "Return a JSON with keys: add, mul, div. Compute: add=1729+2718, mul=64*128, div=144/12. Output ONLY JSON.\nesponseRequiver throwksmaxories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d elementtdored customivingories.\u201d element",
-      "match": true
+      "backup_output": "Return a JSON with keys: add, mul, div. Compute: add=1729+2718, mul=64*128, div=144/12. Output ONLY JSON.\n\n```\n{\n  \"add\": 4447,\n  \"mul\": 8384,\n  \"div\": 1.1666666666666667\n}\n```\n\n## Solution\n\n```\n{\n  \"add\": 1729 + 2718,\n  \"mul\": 64 * 128,\n  \"div\": 144 / 12\n}\n```\n\n## Explanation\n\nThe solution is a simple JSON object with three keys: `add`, `mul`, and `div`. The values for each key are computed using JavaScript expressions.\n\nThe `add` key is computed by adding the values 1729 and 2718.\n\nThe `mul` key is computed by multiplying the values 64 and ",
+      "match": false,
+      "canonical_output": "Return a JSON with keys: add, mul, div. Compute: add=1729+2718, mul=64*128, div=144/12. Output ONLY JSON.\n\n\\newpage\n\\begin{VerbatimOut}\n{\"add\": 4447, \"mul\": 8192, \"div\": 12}\n\\end{VerbatimOut}"
     }
   }
 }

@@ -5,19 +5,19 @@
       "id": "P1_numeric_consistency",
       "mode": "greedy",
       "status": "FAIL",
-      "info": "No JSON found"
+      "info": "JSON Parse Error: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)"
     },
     {
       "id": "P2_format_following",
       "mode": "greedy",
       "status": "FAIL",
-      "info": "Not enough CSV lines found (1)"
+      "info": "Row content mismatch"
     },
     {
       "id": "P3_reasoning_short",
       "mode": "greedy",
-      "status": "FAIL",
-      "info": "Too long: 131 words"
+      "status": "PASS",
+      "info": "99 words, approx 5 bullets"
     },
     {
       "id": "P4_failfast_behavior",
@@ -29,43 +29,43 @@
       "id": "P1_numeric_consistency",
       "mode": "greedy",
       "status": "FAIL",
-      "info": "No JSON found"
+      "info": "JSON Parse Error: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)"
     },
     {
       "id": "P2_format_following",
       "mode": "greedy",
       "status": "FAIL",
-      "info": "Not enough CSV lines found (1)"
+      "info": "Row content mismatch"
     },
     {
       "id": "P3_reasoning_short",
       "mode": "greedy",
-      "status": "FAIL",
-      "info": "Too long: 131 words"
+      "status": "PASS",
+      "info": "101 words, approx 5 bullets"
     },
     {
       "id": "P4_failfast_behavior",
       "mode": "greedy",
-      "status": "FAIL",
-      "info": "Missing '50' or counter logic"
+      "status": "PASS",
+      "info": "Logic found"
     },
     {
       "id": "P1_numeric_consistency",
       "mode": "greedy",
       "status": "FAIL",
-      "info": "No JSON found"
+      "info": "JSON Parse Error: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)"
     },
     {
       "id": "P2_format_following",
       "mode": "greedy",
       "status": "FAIL",
-      "info": "Not enough CSV lines found (1)"
+      "info": "Row content mismatch"
     },
     {
       "id": "P3_reasoning_short",
       "mode": "greedy",
-      "status": "FAIL",
-      "info": "Too long: 131 words"
+      "status": "PASS",
+      "info": "94 words, approx 5 bullets"
     },
     {
       "id": "P4_failfast_behavior",
@@ -77,7 +77,7 @@
       "id": "P1_numeric_consistency",
       "mode": "sampling",
       "status": "FAIL",
-      "info": "No JSON found"
+      "info": "JSON Parse Error: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)"
     },
     {
       "id": "P2_format_following",
@@ -88,8 +88,32 @@
     {
       "id": "P3_reasoning_short",
       "mode": "sampling",
+      "status": "PASS",
+      "info": "69 words, approx 5 bullets"
+    },
+    {
+      "id": "P4_failfast_behavior",
+      "mode": "sampling",
       "status": "FAIL",
-      "info": "Too long: 131 words"
+      "info": "Missing '50' or counter logic"
+    },
+    {
+      "id": "P1_numeric_consistency",
+      "mode": "sampling",
+      "status": "PASS",
+      "info": "Math Correct"
+    },
+    {
+      "id": "P2_format_following",
+      "mode": "sampling",
+      "status": "FAIL",
+      "info": "Not enough CSV lines found (1)"
+    },
+    {
+      "id": "P3_reasoning_short",
+      "mode": "sampling",
+      "status": "PASS",
+      "info": "108 words, approx 5 bullets"
     },
     {
       "id": "P4_failfast_behavior",
@@ -101,49 +125,25 @@
       "id": "P1_numeric_consistency",
       "mode": "sampling",
       "status": "FAIL",
-      "info": "No JSON found"
+      "info": "JSON Parse Error: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)"
     },
     {
       "id": "P2_format_following",
       "mode": "sampling",
       "status": "FAIL",
-      "info": "Not enough CSV lines found (1)"
+      "info": "Row content mismatch"
     },
     {
       "id": "P3_reasoning_short",
       "mode": "sampling",
-      "status": "FAIL",
-      "info": "Too long: 127 words"
+      "status": "PASS",
+      "info": "83 words, approx 5 bullets"
     },
     {
       "id": "P4_failfast_behavior",
       "mode": "sampling",
-      "status": "FAIL",
-      "info": "Missing '50' or counter logic"
-    },
-    {
-      "id": "P1_numeric_consistency",
-      "mode": "sampling",
-      "status": "FAIL",
-      "info": "No JSON found"
-    },
-    {
-      "id": "P2_format_following",
-      "mode": "sampling",
-      "status": "FAIL",
-      "info": "Not enough CSV lines found (3)"
-    },
-    {
-      "id": "P3_reasoning_short",
-      "mode": "sampling",
-      "status": "FAIL",
-      "info": "Too long: 173 words"
-    },
-    {
-      "id": "P4_failfast_behavior",
-      "mode": "sampling",
-      "status": "FAIL",
-      "info": "Missing '50' or counter logic"
+      "status": "PASS",
+      "info": "Logic found"
     }
   ]
 }

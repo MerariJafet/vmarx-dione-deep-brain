@@ -1,0 +1,26 @@
+{
+    "timestamp": "2025-12-30T23:06:00",
+    "stage": "Stage 2: Instruction Tuning",
+    "acceptance_criteria": {
+        "P1_numeric_consistency": "JSON parseable, correct add/mul/div values.",
+        "P2_format_following": "CSV parseable, exactly 3 rows, correct increment/square logic.",
+        "P3_reasoning_short": "Output <= 90 words, exactly 5 bullet points.",
+        "P4_failfast_behavior": "Pseudocode with counter and threshold 50."
+    },
+    "risks": [
+        {
+            "type": "OOM",
+            "mitigation": "Max seq length 1024, batch_size 1, grad_accum 8-16, gradient checkpointing."
+        },
+        {
+            "type": "Catastrophic Forgetting",
+            "mitigation": "Low learning rate (2e-5), LoRA adapters only, targeted dataset."
+        }
+    ],
+    "resource_allocation": {
+        "gpu": "RTX 5060 8GB",
+        "method": "QLoRA 4-bit",
+        "output_dir": "models/training_v2_0/"
+    },
+    "evaluation_protocol": "Run scripts/run_phase_a.py pointing to models/training_v2_0/checkpoint_final/"
+}

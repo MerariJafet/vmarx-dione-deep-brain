@@ -4,7 +4,10 @@ from peft import get_peft_model, LoraConfig, TaskType
 from accelerate import load_checkpoint_in_model
 import os
 
-def load_phaseA_model(checkpoint_path="models/training_v1_0/checkpoint_final", device_map="auto"):
+def load_phaseA_model(checkpoint_path=None, device_map="auto"):
+    if checkpoint_path is None:
+        checkpoint_path = os.getenv("PHASE_A_CHECKPOINT", "models/training_v1_0/checkpoint_final")
+    
     base_model_path = "/home/merari-acero/Escritorio/VMarx Dione DB/models/Mistral-7B-v0.1"
     
     print(f"Initializing Base Model (4-bit): {base_model_path}")
@@ -29,10 +32,7 @@ def load_phaseA_model(checkpoint_path="models/training_v1_0/checkpoint_final", d
         r=16,
         lora_alpha=32,
         lora_dropout=0.05,
-        target_modules=[
-            "q_proj", "k_proj", "v_proj", "o_proj",
-            "gate_proj", "up_proj", "down_proj"
-        ]
+        target_modules=["q_proj", "v_proj"]
     )
     
     model = get_peft_model(model, peft_config)

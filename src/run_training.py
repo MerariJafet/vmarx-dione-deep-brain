@@ -1,26 +1,12 @@
 import logging
 import os
 import json
-import yaml
-import torch.utils.checkpoint
-
-# MONKEYPATCH: Enforce use_reentrant=False to silence PyTorch warnings
-# This must be done finding the original first, then wrapping it.
-# We do this before other imports might capture the reference.
-if hasattr(torch.utils.checkpoint, "checkpoint"):
-    _original_checkpoint = torch.utils.checkpoint.checkpoint
-    def checkpoint_patched(function, *args, **kwargs):
-        kwargs.setdefault("use_reentrant", False)
-        return _original_checkpoint(function, *args, **kwargs)
-    torch.utils.checkpoint.checkpoint = checkpoint_patched
-
-from pathlib import Path
-from src.training.dataset import SlidingWindowDataset
-from src.training.model_utils import get_qlora_model
-from src.training.trainer import PilotTrainer
-from src.training.preflight import check_dataset_health
+import torch
 import argparse
-import sys
+from pathlib import Path
+from torch.utils.data import DataLoader
+from src.training.model_utils import get_qlora_model, get_tokenizer
+from src.training.trainer import PilotTrainer
 
 # Setup Logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -28,128 +14,77 @@ logger = logging.getLogger("training.runner")
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--config", type=str, default="configs/training_spec.json")
     args = parser.parse_args()
 
-    # Set rigid seed for recovery (ensure different from previous run)
-    RECOVERY_SEED = 97
-    import random
-    import numpy as np
-    import torch
-    random.seed(RECOVERY_SEED)
-    np.random.seed(RECOVERY_SEED)
-    torch.manual_seed(RECOVERY_SEED)
-    torch.cuda.manual_seed_all(RECOVERY_SEED)
-    logger.info(f"*** RECOVERY MODE *** Set Global Seed to {RECOVERY_SEED}")
-
-    # Load spec
-    with open("configs/training_spec.json", "r") as f:
+    # Load Config
+    with open(args.config, "r") as f:
         full_config = json.load(f)
-    # Select Config V1.0 if available
-    if "training_v1_0" in full_config:
-        config = full_config["training_v1_0"]
-        logger.info("Using configuration: training_v1_0")
-    else:
-        config = full_config["pilot_training_v0.1"]
-        logger.warning("V1.0 config not found, falling back to Pilot.")
     
-    # 1. Datasets
-    logger.info("Initializing Datasets...")
-    data_dir = config["paths"]["tokenized_data"]
-    sampling_mode = config["data"]["sampling"]["crypto_equity_balance"]
+    # Select first key or use specific one
+    config_key = list(full_config.keys())[0] if "training_v1_0" not in full_config else "training_v1_0"
+    if "training_v2_0" in full_config: config_key = "training_v2_0"
     
-    # Train
-    train_dataset = SlidingWindowDataset(
-        data_dir, 
-        seq_len=config["training_setup"]["seq_len_effective"],
-        stride=config["training_setup"].get("stride", 1024),
-        split="train",
-        train_pct=config["data"]["split"]["train_pct"],
-        sampling_mode=sampling_mode
-    )
-    
-    # Val - Crypto
-    val_crypto = SlidingWindowDataset(
-        data_dir, 
-        seq_len=config["training_setup"]["seq_len_effective"],
-        split="val",
-        train_pct=config["data"]["split"]["train_pct"],
-        domain_filter="crypto"
-    )
+    config = full_config[config_key]
+    logger.info(f"Using configuration: {config_key}")
 
-    # Val - Equity
-    val_equity = SlidingWindowDataset(
-        data_dir, 
-        seq_len=config["training_setup"]["seq_len_effective"],
-        split="val",
-        train_pct=config["data"]["split"]["train_pct"],
-        domain_filter="equities" # Assumes files start with equities_
-    )
-    
-    # DataLoaders
-    from torch.utils.data import DataLoader
-    from src.training.dataset import custom_collate_fn
-    
+    # Initialize Tokenizer
+    tokenizer = get_tokenizer(config)
+
+    # 1. Dataset Selection
+    if "instruction_data" in config["paths"]:
+        logger.info("Initializing Instruction Dataset (SFT)...")
+        from src.training.instruction_dataset import InstructionDataset, instruction_collate_fn
+        train_path = os.path.join(config["paths"]["instruction_data"], "train.jsonl")
+        val_path = os.path.join(config["paths"]["instruction_data"], "val.jsonl")
+        
+        train_dataset = InstructionDataset(train_path, tokenizer, max_seq_length=config["training_setup"]["seq_len_effective"])
+        val_dataset = InstructionDataset(val_path, tokenizer, max_seq_length=config["training_setup"]["seq_len_effective"])
+        
+        collate_fn = instruction_collate_fn
+        val_loaders = {"instruction": DataLoader(val_dataset, batch_size=config["training_setup"]["microbatch"], collate_fn=collate_fn)}
+    else:
+        logger.info("Initializing Sliding Window Dataset (Stage 1)...")
+        from src.training.dataset import SlidingWindowDataset, custom_collate_fn
+        data_dir = config["paths"]["tokenized_data"]
+        train_dataset = SlidingWindowDataset(data_dir, seq_len=config["training_setup"]["seq_len_effective"], split="train")
+        val_crypto = SlidingWindowDataset(data_dir, seq_len=config["training_setup"]["seq_len_effective"], split="val", domain_filter="crypto")
+        
+        collate_fn = custom_collate_fn
+        val_loaders = {"crypto": DataLoader(val_crypto, batch_size=config["training_setup"]["microbatch"], collate_fn=collate_fn)}
+
     train_loader = DataLoader(
         train_dataset, 
         batch_size=config["training_setup"]["microbatch"],
-        num_workers=2,
-        pin_memory=True,
-        collate_fn=custom_collate_fn
+        shuffle=("instruction_data" in config["paths"]), # Shuffle for map-style SFT
+        collate_fn=collate_fn
     )
-    
-    val_loaders = {}
-    if len(val_crypto.files) > 0:
-        val_loaders["crypto"] = DataLoader(val_crypto, batch_size=config["training_setup"]["microbatch"], num_workers=1, collate_fn=custom_collate_fn)
-    
-    if len(val_equity.files) > 0:
-        val_loaders["equity"] = DataLoader(val_equity, batch_size=config["training_setup"]["microbatch"], num_workers=1, collate_fn=custom_collate_fn)
-    
-    if not val_loaders:
-        logger.warning("No validation data found!")
 
-    # 2. Model
-    logger.info("Initializing Model (QLoRA)...")
-    model = get_qlora_model(config)
-    
-    # 3. Check for Resume
+    # 2. Model Loading
+    stage1_ckpt = config["paths"].get("stage1_checkpoint")
+    model = get_qlora_model(config, checkpoint_path=stage1_ckpt)
+
+    # 3. Trainer
     output_dir = config["paths"]["output_dir"]
+    trainer = PilotTrainer(model, train_loader, config, output_dir, val_loaders=val_loaders)
+    
+    # Check for Resume
     resume_path = None
     if os.path.exists(output_dir):
-        # Look for checkpoints
-        # Filter for directories like 'checkpoint_123' where the part after underscore is an integer
-        ckpts = [d for d in os.listdir(output_dir) 
-                 if d.startswith("checkpoint_") 
-                 and len(d.split("_")) > 1 
-                 and d.split("_")[1].isdigit()]
-        
+        # Look for intra-stage resume (v2_0)
+        ckpts = [d for d in os.listdir(output_dir) if d.startswith("checkpoint_") and d.split("_")[1].isdigit()]
         if ckpts:
-            # Checkpoint Strategy: Prefer 1600 > Latest (if Latest > 1600)
-            # Find 1600 specifically
-            ckpt_1600 = next((c for c in ckpts if c == "checkpoint_1600"), None)
-            
-            # Sort by step number
             ckpts.sort(key=lambda x: int(x.split("_")[1]))
-            latest_ckpt = ckpts[-1]
-            latest_step = int(latest_ckpt.split("_")[1])
-            
-            # Strategy:
-            # If 1600 exists and latest < 1600 (impossible if 1600 exists?) or latest == 1600, use 1600.
-            # If latest > 1600, check if latest is a crash checkpoint?
-            # User request: "Prefer resume from checkpoint_1600 (known-good)"
-            
-            if ckpt_1600:
-                logger.info("Found guaranteed safe checkpoint_1600. Preferring this for recovery.")
-                resume_path = os.path.join(output_dir, ckpt_1600)
-            else:
-                resume_path = os.path.join(output_dir, latest_ckpt)
-                logger.info(f"Checkpoint 1600 not found. Resuming from latest: {resume_path}")
-                
-            logger.info(f"Selected Checkpoint: {resume_path}")
+            resume_path = os.path.join(output_dir, ckpts[-1])
+            logger.info(f"Resuming Stage 2 from within {output_dir}: {resume_path}")
+    
+    if not resume_path and stage1_ckpt:
+        # Initial Stage 2 start: model weights were already loaded in get_qlora_model.
+        # We do NOT use resume_path for Stage 1 inheritance because it tries to load 
+        # Stage 1 optimizer states which don't match Stage 2.
+        logger.info("Initializing Stage 2 using Stage 1 weights (optimizer start fresh).")
+        resume_path = None
 
-    # 4. Trainer
-    logger.info("Starting Trainer...")
-    trainer = PilotTrainer(model, train_loader, config, output_dir, val_loaders=val_loaders)
     trainer.train(resume_from_checkpoint=resume_path)
 
 if __name__ == "__main__":

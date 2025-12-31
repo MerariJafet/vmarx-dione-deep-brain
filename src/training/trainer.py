@@ -133,13 +133,12 @@ class PilotTrainer:
             while completed_steps < total_steps:
                 step_start_time = time.time()
                 self.model.train() # Ensure model is in train mode at start of each step
-                
+                try:
                     batch = next(data_iter)
                     self.total_attempts += 1
                     self.last_activity_time = time.time()
                 except StopIteration:
-                    # Restart iterator if data exhausted?
-                    # SlidingWindowDataset is huge, but if small dataset, we cycle.
+                    # Restart iterator if data exhausted
                     data_iter = iter(self.train_loader)
                     batch = next(data_iter)
                     self.last_activity_time = time.time()

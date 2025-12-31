@@ -1,7 +1,7 @@
 import os
 import json
 
-CHECKPOINT_PATH = "models/training_v1_0/checkpoint_final"
+CHECKPOINT_PATH = os.getenv("PHASE_A_CHECKPOINT", "models/training_v1_0/checkpoint_final")
 REQUIRED_FILES = ["model.safetensors", "optimizer.bin", "random_states_0.pkl"]
 
 def check_inventory():

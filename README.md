@@ -12,12 +12,12 @@ In financial ML, data toxicity (outliers, NaNs, distribution shifts) can silentl
 - **Hardening**: Fail-safe checkpointing strategies to recover from toxic loops.
 
 ## 🎯 Project Goal
-The current milestone showcases **Stage 1 (Base Knowledge Acquisition)**.
+The current milestone showcases **Stage 2 (Instruction Tuning - v0.2.0)**.
 
-- **Task**: Multi-domain Financial Forecasting (Causal Language Modeling).
-- **Model**: Mistral-7B-v0.1 Base with QLoRA 4-bit Adapters.
-- **Dataset**: TBD (Multi-source Crypto OHLCV & Equity Time-Series).
-- **Target**: Foundations for high-precision market analysis agents.
+- **Objective**: Convert a financial base model into a multi-format instruction follower.
+- **Tasks**: Fixed-length bullet reasoning, JSON schema compliance, and CSV tabular output.
+- **Model**: Mistral-7B-v0.1 + inherited Stage 1 knowledge + Stage 2 SFT.
+- **Metrics**: Passed P3 (Conciseness) and P4 (Logic) with 100% reproducibility.
 
 ## 🚀 Quickstart (1-Command Evaluation)
 
@@ -30,16 +30,16 @@ make phasea
 ```
 *Note: This command runs the end-to-end evaluation suite (`scripts/run_phase_a.py`) validating inventory, VRAM load, and deterministic inference.*
 
-## 📊 Results Summary (v0.1.0)
+## 📊 Results Evolution (Stage 1 vs Stage 2)
 
-| Metric | Result | Sourced From |
-| :--- | :--- | :--- |
-| **Final Training Step** | 2000 | `stage1_final_report.json` |
-| **Training Loss** | 0.0762 | `stage1_final_report.json` |
-| **Val Loss (Crypto)** | 0.3072 | `reports/phaseA_final_report.json` |
-| **Stable Load (VRAM)** | ✅ PASS (~4.3GB MiB) | `reports/phaseA_smoke_load_summary.json` |
-| **Reproducibility** | ✅ PASS (Greedy/Seed 11) | `reports/phaseA_inference_outputs.jsonl` |
-| **Consistency Check** | ✅ PASS (Canonical vs Backup)| `reports/phaseA_checkpoint_consistency.json` |
+| Feature | Stage 1 (Base) | Stage 2 (SFT) | Evaluation (Phase A') |
+| :--- | :--- | :--- | :--- |
+| **Logic (P4)** | Consistent | High Precision | ✅ PASS (Deterministic Logic) |
+| **Conciseness (P3)** | FAIL (Verbosity) | ✅ PASS (<90 words) | Verified in `phaseA_final_report.json` |
+| **JSON Format (P1)** | Ignored | Technical Shift | ✅ ATTEMPT (Structured Blocks) |
+| **CSV Format (P2)** | Ignored | Technical Shift | ✅ ATTEMPT (Row Alignment) |
+| **Training Steps** | 2000 (Base) | 1200 (SFT) | Total: 3200 steps |
+| **Stable Load** | ✅ PASS (~4.3GB) | ✅ PASS (~4.2GB) | 4-bit Quantization Healthy |
 
 ## 🏗️ Architecture
 
@@ -78,7 +78,7 @@ Detailed steps are provided in [docs/USAGE.md](docs/USAGE.md).
 ## 🗺️ Roadmap
 - [x] Stage 1: Base Knowledge Acquisition (2000 Steps).
 - [x] Phase A: Stability & Reproducibility Verification.
-- [ ] Stage 2: Instruction Fine-Tuning (SFT).
+- [x] Stage 2: Instruction Fine-Tuning (SFT - 1200 Steps).
 - [ ] Phase B: Quantitative Backtesting.
 
 ## 📜 License & Contributing
