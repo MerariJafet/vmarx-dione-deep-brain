@@ -1,6 +1,8 @@
 import subprocess
 import sys
 import os
+import argparse
+import time
 
 def run_command(command, description):
     print(f"\n>>> Running: {description}...")
@@ -14,8 +16,16 @@ def run_command(command, description):
     return True
 
 def main():
+    parser = argparse.ArgumentParser(description="VMarx Dione Phase A Evaluation Suite")
+    parser.add_argument("--config", type=str, help="Path to evaluation config (e.g., configs/phase_a.yaml)", default=None)
+    args = parser.parse_args()
+
+    start_time = time.time()
+
     print("==================================================")
     print("VMarx Dione - Phase A: Comprehensive Evaluation Suite")
+    if args.config:
+        print(f"Config: {args.config}")
     print("==================================================")
 
     # 1. Preflight/Inventory
@@ -42,8 +52,9 @@ def main():
     if not run_command("scripts.phaseA_report_gen", "Final Report Aggregation"):
         sys.exit(1)
 
+    duration = time.time() - start_time
     print("\n==================================================")
-    print("Phase A Evaluation Complete!")
+    print(f"Phase A Evaluation Complete! (Duration: {duration:.2f}s)")
     print("Check 'reports/phaseA_final_report.json' for full details.")
     print("==================================================")
 
